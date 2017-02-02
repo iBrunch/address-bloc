@@ -5,7 +5,7 @@ class AddressBook
 
   def initialize
     @entries = []
-end
+ end
 
 def remove_entry(name, phone_number, email)
   delete_entry = nil
