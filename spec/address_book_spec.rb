@@ -36,6 +36,7 @@ require_relative '../models/address_book'
      it "adds the provided information to entries" do
        add_entries
        new_entry = book.entries[0]
+
        expect(new_entry.name).to eq('Ada Lovelace')
        expect(new_entry.phone_number).to eq('010.012.1815')
        expect(new_entry.email).to eq('augusta.king@lovelace.com')
@@ -65,7 +66,7 @@ require_relative '../models/address_book'
 
          expect(book_size).to eq 5
     end
-  end
+
 
     it "imports the 1st entry" do
       book.import_from_csv("entries.csv")
@@ -73,7 +74,6 @@ require_relative '../models/address_book'
 
       check_entry(entry_one, "Bill", "555-555-4854", "bill@blocmail.com")
     end
-
 
     it "imports the 2nd entry" do
       book.import_from_csv("entries.csv")
@@ -102,4 +102,37 @@ require_relative '../models/address_book'
       entry_five = book.entries[4]
       check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
     end
+
+  end
+
+  context "#import_from_csv with entries_2" do
+    it "imports the correct number of entries" do
+         book.import_from_csv("entries_2.csv")
+         book_size = book.entries.size
+
+         expect(book_size).to eq 3
+    end
+
+    it "imports the 1st entry" do
+      book.import_from_csv("entries_2.csv")
+
+      entry_one = book.entries[0]
+      check_entry(entry_one, "Scott", "555-555-1234", "scott@scottmail.com")
+    end
+
+    it "imports the 2nd entry" do
+      book.import_from_csv("entries_2.csv")
+
+      entry_two = book.entries[1]
+      check_entry(entry_two, "Randy", "555-555-4321", "randy@notscam.com")
+    end
+
+    it "imports the 3rd entry" do
+      book.import_from_csv("entries_2.csv")
+
+      entry_three = book.entries[2]
+      check_entry(entry_three, "Tim", "555-555-3322", "tim@oldmail.com")
+    end
+
+  end
 end
