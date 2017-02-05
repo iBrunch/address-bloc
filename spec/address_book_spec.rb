@@ -1,4 +1,5 @@
 require_relative '../models/address_book'
+require 'pry'
 
  RSpec.describe AddressBook do
    let(:book) {AddressBook.new}
@@ -58,7 +59,7 @@ require_relative '../models/address_book'
          expect(book.entries.first.name).to eq("Sam P. Le")
        end
      end
-
+=begin
   context "#import_from_csv" do
     it "imports the correct number of entries" do
          book.import_from_csv("entries.csv")
@@ -104,7 +105,7 @@ require_relative '../models/address_book'
     end
 
   end
-=begin
+=end
   context "#import_from_csv with entries_2" do
     it "imports the correct number of entries" do
          book.import_from_csv("entries_2.csv")
@@ -135,7 +136,7 @@ require_relative '../models/address_book'
     end
 
   end
-=end
+
   describe "#binary_search" do
     it "searches AddressBook for a non-existent entry" do
       book.import_from_csv("entries.csv")
