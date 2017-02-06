@@ -14,6 +14,18 @@ require 'pry'
       book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
   end
 
+  context "#nuke" do
+    it "should delete all entries" do
+      book.add_entry("Wiley Jones", "312-234-5943", "wiley@jones.com")
+      book.add_entry("Horton Hughes", "312-555-5534", "horton@hughes.com")
+      book.add_entry("Molly Wilson", "312-325-6533", "molly@wilson.com")
+
+    book.nuke
+    expect(book.entries.size).to eq 0
+    end
+  end
+
+  end
    context "attributes" do
      it "responds to entries" do
        expect(book).to respond_to(:entries)
